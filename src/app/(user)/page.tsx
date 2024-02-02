@@ -1,10 +1,23 @@
 import React from 'react'
+import Banner from "@/components/Banner";
+import { groq } from "next-sanity";
+import { client } from '../../../sanity/lib/client';
 
-const HomePage = () => {
+
+export const revalidate = 10;
+const bannerQuery = groq`*[_type == 'banner']{
+  image,
+  _id
+} | order(_createdAt asc)`;
+
+
+const HomePage = async () => {
+  const banners = await client.fetch(bannerQuery);
   return (
-    <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo reiciendis et est labore consequuntur. Et quidem soluta deserunt quas ipsum odit fugit cumque quam quisquam, reprehenderit corporis totam tenetur blanditiis.</p>
-    </div>
+    <main className="text-sm overflow-hidden min-h-screen">
+      <Banner banners={banners} />
+    </main>
+   
   )
 }
 
