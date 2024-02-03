@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "../../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import "slick-carousel/slick/slick.css";
+import PageButton from "@/components/PageButton";
+import Footer from "@/components/Footer";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-display">
         <Navbar />
+        <PageButton />
         {children}
+        <Footer />
       </body>
     </html>
   );

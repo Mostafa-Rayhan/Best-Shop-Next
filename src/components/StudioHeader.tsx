@@ -1,5 +1,5 @@
 import Link from "next/link";
-import logo from "@/assets/logoLight.png";
+// import logo from "@/assets/logoLight.png";
 import Image from "next/image";
 import { IoReturnDownBack } from "react-icons/io5";
 
@@ -13,7 +13,7 @@ const StudioHeader = (props: any) => {
         >
           <IoReturnDownBack className="text-2xl" /> Go to Website
         </Link>
-        <Image src={logo} alt="logo" className="w-24" />
+        <Image src="" alt="logo" className="w-24" />
         <p className="text-sm">Admin Studio for Best Online Shopping</p>
       </div>
       {props.renderDefault(props)}
