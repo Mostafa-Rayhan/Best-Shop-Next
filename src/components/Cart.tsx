@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +12,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Price from "./Price";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
     const { productData } = useSelector((state: StateProps) => state.orebi);
     const dispatch = useDispatch();
     const [totalAmt, setTotalAmt] = useState(0);
-    // const { data: session } = useSession();
+    const { data: session } = useSession();
   
     useEffect(() => {
       let price = 0;
