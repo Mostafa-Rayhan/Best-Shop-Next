@@ -28,6 +28,7 @@
     "redux-persist": "^6.0.0",
     "sanity": "^3.27.1",
     "slick-carousel": "^1.8.1",
+    "stripe": "^14.14.0",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
