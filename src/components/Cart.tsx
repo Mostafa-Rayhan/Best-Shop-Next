@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Price from "./Price";
 import { useSession } from "next-auth/react";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
     const { productData } = useSelector((state: StateProps) => state.orebi);
@@ -36,6 +37,32 @@ const Cart = () => {
     };
 
 
+    // Stripe payment
+
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+  );
+  const createCheckout = async () => {
+    if (session?.user) {
+      const stripe = await stripePromise;
+      const response = await fetch("http://localhost:3000/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "appication/json" },
+        body: JSON.stringify({
+          items: productData,
+          email: session?.user?.email,
+        }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        stripe?.redirectToCheckout({ sessionId: data.id });
+      }
+    } else {
+      toast.error("Please sign in to make Checkout");
+    }
+  };
+
+  
     return (
         <Container>
           {productData?.length > 0 ? (
