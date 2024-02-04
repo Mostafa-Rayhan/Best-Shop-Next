@@ -6,7 +6,7 @@ import { BsGridFill } from "react-icons/bs";
 import { ImList } from "react-icons/im";
 import { ProductProps } from "../../../../type";
 import Product from "@/components/Product";
-// import ListProduct from "@/components/ListProduct";
+import ListProduct from "@/components/ListProduct";
 
 const ShopPage = () => {
   const [showGrid, setShowGrid] = useState(true);
@@ -66,9 +66,9 @@ const ShopPage = () => {
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 gap-5">
-          {/* {productData?.map((item: ProductProps) => (
+          {productData?.map((item: ProductProps) => (
             <ListProduct key={item?._id} product={item} />
-          ))} */}
+          ))}
         </div>
       )}
     </Container>

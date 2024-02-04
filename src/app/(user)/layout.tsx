@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import "slick-carousel/slick/slick.css";
 import PageButton from "@/components/PageButton";
 import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -26,10 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-display">
-        <Navbar />
-        <PageButton />
-        {children}
-        <Footer />
+        <Layout>
+          <Navbar />
+          <PageButton />
+          {children}
+          <Footer />
+        </Layout>
       </body>
     </html>
   );
